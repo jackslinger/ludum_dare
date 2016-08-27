@@ -41,10 +41,11 @@ function collideWithBlueLock(player, lock) {
 
 function enemyBumpIntoWall(enemy, layer) {
   if (enemy.body.blocked.left) {
-    enemy.body.velocity.x = this.ENEMY_SPEED;
+    enemy.body.velocity.x = levelOneState.ENEMY_SPEED;
   }
   else if (enemy.body.blocked.right) {
-    enemy.body.velocity.x -= this.ENEMY_SPEED;
+    console.log(game.ENEMY_SPEED);
+    enemy.body.velocity.x = -levelOneState.ENEMY_SPEED;
   }
 }
 
@@ -66,11 +67,12 @@ levelOneState = {
   },
   create: function () {
     this.GRAVITY = 300;
-    this.MAX_X_SPEED = 200;
+    this.MAX_X_SPEED = 100;
     this.MAX_Y_SPEED = 5000;
-    this.ACCELERATION = 50;
+    this.ACCELERATION = 20;
     this.ENEMY_SPEED = 50;
-    this.JUMP_SPEED = -250;
+    this.JUMP_SPEED = -200;
+    this.JUMP_DURATION = 300;
     this.DRAG = 300;
 
     this.stage.backgroundColor = "#4488AA";
@@ -180,8 +182,8 @@ levelOneState = {
       this.jumps = 1;
     }
 
-    if (this.jumps > 0 && game.input.keyboard.downDuration(Phaser.Keyboard.UP, 250)) {
-      player.body.velocity.y = -250;
+    if (this.jumps > 0 && game.input.keyboard.downDuration(Phaser.Keyboard.UP, this.JUMP_DURATION)) {
+      player.body.velocity.y = this.JUMP_SPEED;
       this.jumping = true;
     }
 
