@@ -55,22 +55,6 @@ function enemyBumpIntoWall(enemy, layer) {
 }
 
 levelOneState = {
-  preload: function() {
-    this.load.tilemap('map', 'assets/images/test_map.json', null, Phaser.Tilemap.TILED_JSON);
-    this.load.image('whiteBrick', 'assets/images/Witebrick.png');
-    this.load.image('player', 'assets/images/player_block.png');
-    this.load.image('goldenSkull', 'assets/images/golden_skull.png');
-    this.load.image('spikes', 'assets/images/spikes_new.png');
-    this.load.image('keys', 'assets/images/keys.png');
-    this.load.image('blueKey', 'assets/images/blue_key.png');
-    this.load.image('redKey', 'assets/images/red_key.png');
-    this.load.image('redKeyHole', 'assets/images/red_key_hole.png');
-    this.load.image('blueKeyHole', 'assets/images/blue_key_hole.png');
-    this.load.image('enemy', 'assets/images/test_orange.png');
-    this.load.image('purple', 'assets/images/test_purple.png');
-
-    this.load.bitmapFont('nokia', 'assets/fonts/nokia.png', 'assets/fonts/nokia.xml');
-  },
   create: function () {
     this.GRAVITY = 300;
     this.MAX_X_SPEED = 100;
@@ -81,7 +65,10 @@ levelOneState = {
     this.JUMP_DURATION = 300;
     this.DRAG = 300;
 
-    this.stage.backgroundColor = "#4488AA";
+    // this.stage.backgroundColor = "#4488AA";
+
+    sky = this.add.sprite(0, 0, 'sky');
+    sky.fixedToCamera = true;
 
     this.physics.startSystem(Phaser.Physics.ARCADE);
     // this.physics.arcade.gravity.y = 300;

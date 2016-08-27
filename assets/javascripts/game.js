@@ -3,5 +3,7 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, '', {});
 game.state.add('levelOne', levelOneState);
 game.state.add('win', winState);
 game.state.add('lose', loseState);
+game.state.add('boot', bootState);
+game.state.add('preloader', preloaderState);
 
-game.state.start('levelOne');
+game.state.start('boot');
