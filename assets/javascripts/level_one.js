@@ -43,6 +43,7 @@ levelOneState = {
   preload: function() {
     this.load.tilemap('map', 'assets/images/test_map.json', null, Phaser.Tilemap.TILED_JSON);
     this.load.image('tiles', 'assets/images/test_tiles.png');
+    this.load.image('whiteBrick', 'assets/images/Witebrick.png');
     this.load.image('player', 'assets/images/player_block.png');
     this.load.image('goldenSkull', 'assets/images/golden_skull.png');
     this.load.image('spikes', 'assets/images/spikes_new.png');
@@ -61,10 +62,10 @@ levelOneState = {
     // this.physics.arcade.gravity.y = 300;
 
     map = this.add.tilemap('map');
-    map.addTilesetImage('test_tiles', 'tiles');
+    map.addTilesetImage('Witebrick', 'whiteBrick');
 
     layer = map.createLayer(0);
-    map.setCollisionBetween(2, 2);
+    map.setCollisionBetween(7, 7);
 
     layer.resizeWorld();
 
@@ -92,19 +93,19 @@ levelOneState = {
 
     skulls = game.add.group();
     skulls.enableBody = true;
-    map.createFromObjects('Skull Layer', 4, 'goldenSkull', 0, true, false, skulls)
+    map.createFromObjects('Skull Layer', 2, 'goldenSkull', 0, true, false, skulls)
 
     spikes = game.add.group();
     spikes.enableBody = true;
-    map.createFromObjects('Spike Layer', 3, 'spikes', 0, true, false, spikes);
+    map.createFromObjects('Spike Layer', 1, 'spikes', 0, true, false, spikes);
 
     blueKeys = game.add.group();
     blueKeys.enableBody = true;
-    map.createFromObjects('Key Layer', 5, 'blueKey', 0, true, false, blueKeys);
+    map.createFromObjects('Key Layer', 3, 'blueKey', 0, true, false, blueKeys);
 
     blueKeyHoles = game.add.group();
     blueKeyHoles.enableBody = true;
-    map.createFromObjects('Key Layer', 6, 'blueKeyHole', 0, true, false, blueKeyHoles);
+    map.createFromObjects('Key Layer', 4, 'blueKeyHole', 0, true, false, blueKeyHoles);
 
     for (i in blueKeyHoles.hash) {
       blueKeyHoles.hash[i].body.immovable = true;
@@ -112,11 +113,11 @@ levelOneState = {
 
     redKeys = game.add.group();
     redKeys.enableBody = true;
-    map.createFromObjects('Key Layer', 7, 'redKey', 0, true, false, redKeys);
+    map.createFromObjects('Key Layer', 5, 'redKey', 0, true, false, redKeys);
 
     redKeyHoles = game.add.group();
     redKeyHoles.enableBody = true;
-    map.createFromObjects('Key Layer', 8, 'redKeyHole', 0, true, false, redKeyHoles);
+    map.createFromObjects('Key Layer', 6, 'redKeyHole', 0, true, false, redKeyHoles);
 
     for (i in redKeyHoles.hash) {
       redKeyHoles.hash[i].body.immovable = true;
