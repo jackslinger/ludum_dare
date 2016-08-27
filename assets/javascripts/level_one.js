@@ -95,7 +95,10 @@ levelOneState = {
     redKeyText = this.add.bitmapText(40, 39, 'nokia', '0', 16);
     redKeyText.fixedToCamera = true;
 
-    player = this.add.sprite((1 * 32), (27 * 32), 'player')
+    playerX = map.objects["Player Layer"][0].x;
+    playerY = map.objects["Player Layer"][0].y - 32;
+
+    player = this.add.sprite(playerX, playerY, 'player')
     this.physics.arcade.enable(player);
     player.body.collideWorldBounds = true;
     player.body.bounce.y = 0.0;
@@ -105,7 +108,7 @@ levelOneState = {
     player.body.drag.setTo(this.DRAG, 0);
     this.camera.follow(player);
 
-    pushBlock = this.add.sprite((4 * 32), (27 * 32), 'purple')
+    pushBlock = this.add.sprite((1 * 32), (48 * 32), 'purple')
     this.physics.arcade.enable(pushBlock);
     pushBlock.body.drag.setTo(600, 0);
     pushBlock.body.gravity.y = this.GRAVITY;
@@ -177,12 +180,12 @@ levelOneState = {
       player.body.velocity.x += this.ACCELERATION;
     }
 
-    if (player.body.blocked.down) {
+    if (player.body.blocked.down || player.body.touching.down) {
       this.jumping = false;
       this.jumps = 1;
     }
 
-    if (this.jumps > 0 && game.input.keyboard.downDuration(Phaser.Keyboard.UP, this.JUMP_DURATION)) {
+    if (this.jumps > 0 && (player.body.blocked.down || player.body.touching.down) && game.input.keyboard.downDuration(Phaser.Keyboard.UP, this.JUMP_DURATION)) {
       player.body.velocity.y = this.JUMP_SPEED;
       this.jumping = true;
     }
