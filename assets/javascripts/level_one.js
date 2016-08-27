@@ -194,17 +194,18 @@ levelOneState = {
     }
 
     if (player.body.blocked.down || player.body.touching.down) {
+      this.readyToJump = true;
       this.jumping = false;
-      this.jumps = 1;
+    } else {
+      this.readyToJump = false;
     }
 
-    if (this.jumps > 0 && game.input.keyboard.downDuration(Phaser.Keyboard.UP, this.JUMP_DURATION)) {
+    if ((this.readyToJump || this.jumping) && game.input.keyboard.downDuration(Phaser.Keyboard.UP, this.JUMP_DURATION)) {
       player.body.velocity.y = this.JUMP_SPEED;
       this.jumping = true;
     }
 
     if (this.jumping && game.input.keyboard.upDuration(Phaser.Keyboard.UP)) {
-      this.jumps -= 1;
       this.jumping = false;
     }
   },
