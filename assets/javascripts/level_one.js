@@ -39,10 +39,18 @@ function collideWithBlueLock(player, lock) {
   }
 }
 
+function enemyBumpIntoWall(enemy, layer) {
+  if (enemy.body.blocked.left) {
+    enemy.body.velocity.x = this.ENEMY_SPEED;
+  }
+  else if (enemy.body.blocked.right) {
+    enemy.body.velocity.x -= this.ENEMY_SPEED;
+  }
+}
+
 levelOneState = {
   preload: function() {
     this.load.tilemap('map', 'assets/images/test_map.json', null, Phaser.Tilemap.TILED_JSON);
-    this.load.image('tiles', 'assets/images/test_tiles.png');
     this.load.image('whiteBrick', 'assets/images/Witebrick.png');
     this.load.image('player', 'assets/images/player_block.png');
     this.load.image('goldenSkull', 'assets/images/golden_skull.png');
@@ -52,10 +60,19 @@ levelOneState = {
     this.load.image('redKey', 'assets/images/red_key.png');
     this.load.image('redKeyHole', 'assets/images/red_key_hole.png');
     this.load.image('blueKeyHole', 'assets/images/blue_key_hole.png');
+    this.load.image('enemy', 'assets/images/test_orange.png');
 
     this.load.bitmapFont('nokia', 'assets/fonts/nokia.png', 'assets/fonts/nokia.xml');
   },
   create: function () {
+    this.GRAVITY = 300;
+    this.MAX_X_SPEED = 200;
+    this.MAX_Y_SPEED = 5000;
+    this.ACCELERATION = 50;
+    this.ENEMY_SPEED = 50;
+    this.JUMP_SPEED = -250;
+    this.DRAG = 300;
+
     this.stage.backgroundColor = "#4488AA";
 
     this.physics.startSystem(Phaser.Physics.ARCADE);
@@ -83,12 +100,14 @@ levelOneState = {
     redKeyText = this.add.bitmapText(40, 39, 'nokia', '0', 16);
     redKeyText.fixedToCamera = true;
 
-    player = this.add.sprite(0, 1536, 'player')
+    player = this.add.sprite((0 * 32), (48 * 32), 'player')
     this.physics.arcade.enable(player);
     player.body.collideWorldBounds = true;
     player.body.bounce.y = 0.0;
     player.body.setSize(20, 32, 8, 0);
-    player.body.gravity.y = 300;
+    player.body.gravity.y = this.GRAVITY;
+    player.body.maxVelocity.setTo(this.MAX_X_SPEED, this.MAX_Y_SPEED);
+    player.body.drag.setTo(this.DRAG, 0);
     this.camera.follow(player);
 
     skulls = game.add.group();
@@ -98,6 +117,10 @@ levelOneState = {
     spikes = game.add.group();
     spikes.enableBody = true;
     map.createFromObjects('Spike Layer', 1, 'spikes', 0, true, false, spikes);
+
+    for (i in spikes.hash) {
+      spikes.hash[i].body.setSize(32, 12, 0, 20);
+    }
 
     blueKeys = game.add.group();
     blueKeys.enableBody = true;
@@ -123,14 +146,21 @@ levelOneState = {
       redKeyHoles.hash[i].body.immovable = true;
     }
 
-    for (i in spikes.hash) {
-      spikes.hash[i].body.setSize(32, 12, 0, 20);
+    enemies = this.add.group();
+    enemies.enableBody = true;
+    enemies.create((34 * 32), (48 * 32), 'enemy');
+
+    for (i in enemies.hash) {
+      enemies.hash[i].body.collideWorldBounds = true;
+      enemies.hash[i].body.velocity.x = this.ENEMY_SPEED
     }
 
     keyboard = this.input.keyboard.createCursorKeys();
   },
   update: function () {
     this.physics.arcade.collide(player, layer);
+    this.physics.arcade.collide(enemies, layer, enemyBumpIntoWall);
+    this.physics.arcade.collide(player, enemies, loseGame);
     this.physics.arcade.collide(player, skulls, winGame);
     this.physics.arcade.collide(player, spikes, loseGame);
     this.physics.arcade.collide(player, blueKeys, collectBlueKey);
@@ -138,17 +168,26 @@ levelOneState = {
     this.physics.arcade.collide(player, redKeyHoles, collideWithRedLock);
     this.physics.arcade.collide(player, blueKeyHoles, collideWithBlueLock);
 
-    player.body.velocity.x = 0
-
     if (keyboard.left.isDown) {
-      player.body.velocity.x = -75;
+      player.body.velocity.x -= this.ACCELERATION;
     }
     else if (keyboard.right.isDown) {
-      player.body.velocity.x = 75;
+      player.body.velocity.x += this.ACCELERATION;
     }
 
-    if (keyboard.up.isDown && player.body.blocked.down) {
-      player.body.velocity.y -= 250
+    if (player.body.blocked.down) {
+      this.jumping = false;
+      this.jumps = 1;
+    }
+
+    if (this.jumps > 0 && game.input.keyboard.downDuration(Phaser.Keyboard.UP, 250)) {
+      player.body.velocity.y = -250;
+      this.jumping = true;
+    }
+
+    if (this.jumping && game.input.keyboard.upDuration(Phaser.Keyboard.UP)) {
+      this.jumps -= 1;
+      this.jumping = false;
     }
   },
   render: function() {
