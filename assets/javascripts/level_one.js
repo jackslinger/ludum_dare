@@ -17,6 +17,13 @@ function checkSpikeCollision(player, spike) {
   return (playerAboveSpike && !playerJumpingUp);
 }
 
+function collideWithEnemy(player, enemy) {
+  playerAboveEnemy = ((player.y + 30) < enemy.y);
+  if (!playerAboveEnemy) {
+    loseGame();
+  }
+}
+
 function collectBlueKey(player, key) {
   keys.blueKey += 1;
   blueKeyText.text = keys.blueKey;
@@ -62,7 +69,7 @@ levelOneState = {
     this.ACCELERATION = 20;
     this.ENEMY_SPEED = 50;
     this.JUMP_SPEED = -200;
-    this.JUMP_DURATION = 300;
+    this.JUMP_DURATION = 200;
     this.DRAG = 300;
 
     // this.stage.backgroundColor = "#4488AA";
@@ -108,10 +115,14 @@ levelOneState = {
     player.body.drag.setTo(this.DRAG, 0);
     this.camera.follow(player);
 
-    pushBlock = this.add.sprite((1 * 32), (48 * 32), 'purple')
-    this.physics.arcade.enable(pushBlock);
-    pushBlock.body.drag.setTo(600, 0);
-    pushBlock.body.gravity.y = this.GRAVITY;
+    pushBlocks = game.add.group();
+    pushBlocks.enableBody = true;
+    map.createFromObjects('Push Layer', 9, 'vase', 0, true, false, pushBlocks)
+
+    for (i in pushBlocks.hash) {
+      pushBlocks.hash[i].body.drag.setTo(600, 0);
+      pushBlocks.hash[i].body.gravity.y = this.GRAVITY;
+    }
 
     skulls = game.add.group();
     skulls.enableBody = true;
@@ -155,6 +166,7 @@ levelOneState = {
 
     for (i in enemies.hash) {
       enemies.hash[i].body.collideWorldBounds = true;
+      enemies.hash[i].body.immovable = true;
       enemies.hash[i].body.velocity.x = this.ENEMY_SPEED
     }
 
@@ -163,15 +175,16 @@ levelOneState = {
   update: function () {
     this.physics.arcade.collide(player, layer);
     this.physics.arcade.collide(enemies, layer, enemyBumpIntoWall);
-    this.physics.arcade.collide(player, enemies, loseGame);
+    this.physics.arcade.collide(player, enemies, collideWithEnemy);
     this.physics.arcade.collide(player, skulls, winGame);
     this.physics.arcade.collide(player, spikes, loseGame, checkSpikeCollision);
     this.physics.arcade.collide(player, blueKeys, collectBlueKey);
     this.physics.arcade.collide(player, redKeys, collectRedKey);
     this.physics.arcade.collide(player, redKeyHoles, collideWithRedLock);
     this.physics.arcade.collide(player, blueKeyHoles, collideWithBlueLock);
-    this.physics.arcade.collide(player, pushBlock);
-    this.physics.arcade.collide(pushBlock, layer);
+    this.physics.arcade.collide(player, pushBlocks);
+    this.physics.arcade.collide(pushBlocks, pushBlocks);
+    this.physics.arcade.collide(pushBlocks, layer);
 
     if (keyboard.left.isDown) {
       player.body.velocity.x -= this.ACCELERATION;
@@ -185,7 +198,7 @@ levelOneState = {
       this.jumps = 1;
     }
 
-    if (this.jumps > 0 && (player.body.blocked.down || player.body.touching.down) && game.input.keyboard.downDuration(Phaser.Keyboard.UP, this.JUMP_DURATION)) {
+    if (this.jumps > 0 && game.input.keyboard.downDuration(Phaser.Keyboard.UP, this.JUMP_DURATION)) {
       player.body.velocity.y = this.JUMP_SPEED;
       this.jumping = true;
     }
