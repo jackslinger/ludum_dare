@@ -15,6 +15,7 @@ preloaderState = {
     this.load.image('blueKeyHole', 'assets/images/blue_keyhole.png');
     this.load.image('enemy', 'assets/images/test_orange.png');
     this.load.image('purple', 'assets/images/test_purple.png');
+    this.load.image('vase', 'assets/images/push_vase.png');
     this.load.bitmapFont('nokia', 'assets/fonts/nokia.png', 'assets/fonts/nokia.xml');
   },
   create: function() {
