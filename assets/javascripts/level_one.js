@@ -3,12 +3,22 @@ var keys = {
   redKey: 0
 }
 
+var latestCheckpoint = {
+  x: null,
+  y: null
+}
+
 function winGame() {
   game.state.start('win');
 }
 
 function loseGame() {
-  game.state.start('lose');
+  if (latestCheckpoint.x && latestCheckpoint.y) {
+    player.x = latestCheckpoint.x;
+    player.y = latestCheckpoint.y;
+  } else {
+    game.state.start('lose');
+  }
 }
 
 function checkSpikeCollision(player, spike) {
@@ -21,6 +31,15 @@ function collideWithEnemy(player, enemy) {
   playerAboveEnemy = ((player.y + 30) < enemy.y);
   if (!playerAboveEnemy) {
     loseGame();
+  }
+}
+
+function collideWithCheckpoint(player, checkpoint) {
+  if (!checkpoint.flagRaised) {
+    checkpoint.flagRaised = true;
+    checkpoint.frameName = 'flag.png';
+    latestCheckpoint.x = checkpoint.x;
+    latestCheckpoint.y = checkpoint.y;
   }
 }
 
@@ -134,6 +153,7 @@ levelOneState = {
 
     for (i in spikes.hash) {
       spikes.hash[i].body.setSize(32, 12, 0, 20);
+      spikes.hash[i].body.immovable = true;
     }
 
     blueKeys = game.add.group();
@@ -160,7 +180,7 @@ levelOneState = {
       redKeyHoles.hash[i].body.immovable = true;
     }
 
-    enemies = this.add.group();
+    enemies = game.add.group();
     enemies.enableBody = true;
     enemies.create((34 * 32), (48 * 32), 'enemy');
 
@@ -168,6 +188,15 @@ levelOneState = {
       enemies.hash[i].body.collideWorldBounds = true;
       enemies.hash[i].body.immovable = true;
       enemies.hash[i].body.velocity.x = this.ENEMY_SPEED
+    }
+
+    checkPoints = game.add.group();
+    checkPoints.enableBody = true;
+    map.createFromObjects('Checkpoint Layer', 10, 'flags', 'flag_pole.png', true, false, checkPoints);
+
+    for (i in checkPoints.hash) {
+      checkPoints.hash[i].body.immovable = true;
+      checkPoints.hash[i].flagRaised = false;
     }
 
     keyboard = this.input.keyboard.createCursorKeys();
@@ -182,6 +211,7 @@ levelOneState = {
     this.physics.arcade.collide(player, redKeys, collectRedKey);
     this.physics.arcade.collide(player, redKeyHoles, collideWithRedLock);
     this.physics.arcade.collide(player, blueKeyHoles, collideWithBlueLock);
+    this.physics.arcade.overlap(player, checkPoints, collideWithCheckpoint);
     this.physics.arcade.collide(player, pushBlocks);
     this.physics.arcade.collide(pushBlocks, pushBlocks);
     this.physics.arcade.collide(pushBlocks, layer);
