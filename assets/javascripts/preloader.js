@@ -16,6 +16,7 @@ preloaderState = {
     this.load.image('enemy', 'assets/images/test_orange.png');
     this.load.image('purple', 'assets/images/test_purple.png');
     this.load.image('vase', 'assets/images/push_vase.png');
+    game.load.atlasJSONHash('flags', 'assets/images/flag.png', 'assets/images/flag.json');
     this.load.bitmapFont('nokia', 'assets/fonts/nokia.png', 'assets/fonts/nokia.xml');
   },
   create: function() {
