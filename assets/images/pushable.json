@@ -1,0 +1,36 @@
+{"frames": [
+
+{
+	"filename": "pressue_plate_down.png",
+	"frame": {"x":0,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "pressue_plate_up.png",
+	"frame": {"x":32,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "push_vase.png",
+	"frame": {"x":64,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "pushable.png",
+	"format": "RGBA8888",
+	"size": {"w":96,"h":32},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:e340d4333e68af8e352e8b925492809f:5f664bd373cf93db56128dae8f07aa4e:07afed4944c43b08890576c5eba0c7e3$"
+}
+}
