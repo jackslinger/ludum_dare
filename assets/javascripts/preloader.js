@@ -14,7 +14,10 @@ preloaderState = {
     this.load.atlasJSONHash('player', 'assets/images/player.png', 'assets/images/player.json');
     this.load.image('vase', 'assets/images/push_vase.png');
     game.load.atlasJSONHash('flags', 'assets/images/flag.png', 'assets/images/flag.json');
+
     this.load.bitmapFont('nokia', 'assets/fonts/nokia.png', 'assets/fonts/nokia.xml');
+
+    game.load.audio('jump', 'assets/sounds/jump.wav');
   },
   create: function() {
     this.state.start('levelOne');

@@ -293,6 +293,10 @@ levelOneState = {
       this.readyToJump = false;
     }
 
+    if (keyboard.up.isDown) {
+      jump.play();
+    }
+
     if ((this.readyToJump || this.jumping) && game.input.keyboard.downDuration(Phaser.Keyboard.UP, this.JUMP_DURATION)) {
       player.body.velocity.y = this.JUMP_SPEED;
       this.jumping = true;
