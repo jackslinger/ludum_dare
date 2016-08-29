@@ -21,8 +21,10 @@ function loseGame() {
     player.x = latestCheckpoint.x;
     player.y = latestCheckpoint.y;
   } else {
-    game.state.start('lose');
+    player.x = playerX;
+    player.y = playerY;
   }
+  hurt.play();
 }
 
 function checkSpikeCollision(player, spike) {
@@ -123,6 +125,8 @@ levelOneState = {
     layer.resizeWorld();
 
     jump = game.add.audio('jump');
+    // collectSkull = game.add.audio('collect');
+    hurt = game.add.audio('hurt');
 
     inventoryGroup = this.add.group();
 
