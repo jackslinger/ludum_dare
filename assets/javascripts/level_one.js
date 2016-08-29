@@ -128,6 +128,9 @@ levelOneState = {
     // collectSkull = game.add.audio('collect');
     hurt = game.add.audio('hurt');
 
+    music = game.add.audio('music', 1, true);
+    music.play();
+
     inventoryGroup = this.add.group();
 
     inventoryBlueKey = this.add.sprite(0, 0, 'keys', 'blue_key');

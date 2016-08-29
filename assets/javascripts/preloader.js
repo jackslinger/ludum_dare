@@ -20,6 +20,7 @@ preloaderState = {
     game.load.audio('jump', 'assets/sounds/jump.wav');
     game.load.audio('collect', 'assets/sounds/collect_skull.wav');
     game.load.audio('hurt', 'assets/sounds/hurt.wav');
+    game.load.audio('music', 'assets/sounds/Desert_City.mp3');
   },
   create: function() {
     this.state.start('levelOne');
