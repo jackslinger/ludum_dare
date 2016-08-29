@@ -122,19 +122,19 @@ levelOneState = {
 
     layer.resizeWorld();
 
-    // inventoryGroup = this.add.group();
-    //
-    // inventoryBlueKey = this.add.sprite(0, 0, 'blueKey');
-    // inventoryBlueKey.fixedToCamera = true;
-    //
-    // blueKeyText = this.add.bitmapText(40, 7, 'nokia', '0', 16);
-    // blueKeyText.fixedToCamera = true;
-    //
-    // inventoryRedKey = this.add.sprite(0, 32, 'redKey');
-    // inventoryRedKey.fixedToCamera = true;
-    //
-    // redKeyText = this.add.bitmapText(40, 39, 'nokia', '0', 16);
-    // redKeyText.fixedToCamera = true;
+    inventoryGroup = this.add.group();
+
+    inventoryBlueKey = this.add.sprite(0, 0, 'keys', 'blue_key');
+    inventoryBlueKey.fixedToCamera = true;
+
+    blueKeyText = this.add.bitmapText(40, 7, 'nokia', '0', 16);
+    blueKeyText.fixedToCamera = true;
+
+    inventoryRedKey = this.add.sprite(0, 32, 'keys', 'red_key');
+    inventoryRedKey.fixedToCamera = true;
+
+    redKeyText = this.add.bitmapText(40, 39, 'nokia', '0', 16);
+    redKeyText.fixedToCamera = true;
 
     playerX = map.objects["Player Layer"][0].x;
     playerY = map.objects["Player Layer"][0].y - 32;
@@ -176,9 +176,9 @@ levelOneState = {
     }
 
     blueKeys = game.add.group();
-    // blueKeys.enableBody = true;
-    // map.createFromObjects('Key Layer', 3, 'blueKey', 0, true, false, blueKeys);
-    //
+    blueKeys.enableBody = true;
+    map.createFromObjects('Key Layer', 23, 'keys', 'blue_key', true, false, blueKeys);
+
     blueKeyHoles = game.add.group();
     blueKeyHoles.enableBody = true;
     map.createFromObjects('Key Layer', 24, 'keys', 'blue_keyhole', true, false, blueKeyHoles);
@@ -188,17 +188,17 @@ levelOneState = {
     }
 
     redKeys = game.add.group();
-    // redKeys.enableBody = true;
-    // map.createFromObjects('Key Layer', 5, 'redKey', 0, true, false, redKeys);
-    //
+    redKeys.enableBody = true;
+    map.createFromObjects('Key Layer', 25, 'keys', 'red_key', true, false, redKeys);
+
     redKeyHoles = game.add.group();
-    // redKeyHoles.enableBody = true;
-    // map.createFromObjects('Key Layer', 6, 'redKeyHole', 0, true, false, redKeyHoles);
-    //
-    // for (i in redKeyHoles.hash) {
-    //   redKeyHoles.hash[i].body.immovable = true;
-    // }
-    //
+    redKeyHoles.enableBody = true;
+    map.createFromObjects('Key Layer', 26, 'keys', 'red_keyhole', true, false, redKeyHoles);
+
+    for (i in redKeyHoles.hash) {
+      redKeyHoles.hash[i].body.immovable = true;
+    }
+
     enemies = game.add.group();
     enemies.enableBody = true;
     map.createFromObjects('Enemy Layer', 21, 'enemy', 0, true, false, enemies);

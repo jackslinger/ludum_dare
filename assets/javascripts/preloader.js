@@ -7,7 +7,6 @@ preloaderState = {
     this.load.image('whiteBrick', 'assets/images/Witebrick.png');
     this.load.atlasJSONHash('tiles', 'assets/images/blocks.png', 'assets/images/blocks.json');
     this.load.atlasJSONHash('backgroundTiles', 'assets/images/background_tiles.png', 'assets/images/background_tiles.json');
-    // this.load.image('player', 'assets/images/player_block.png');
     this.load.image('goldenSkull', 'assets/images/golden_skull.png');
     this.load.image('spikes', 'assets/images/spikes_new.png');
     this.load.atlasJSONHash('keys', 'assets/images/keys.png', 'assets/images/keys.json');
