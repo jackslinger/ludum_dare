@@ -143,7 +143,7 @@ levelOneState = {
     playerY = map.objects["Player Layer"][0].y - 32;
 
     player = this.add.sprite(playerX, playerY, 'player', 'character_idle');
-    player.animations.add('walking', Phaser.Animation.generateFrameNames('character_walking', 2, 6), 10, true);
+    player.animations.add('walking', Phaser.Animation.generateFrameNames('character_walking', 1, 4), 8, true);
     player.animations.add('idle', ['character_idle'], 1, false);
 
     this.physics.arcade.enable(player);
