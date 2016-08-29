@@ -300,7 +300,7 @@ levelOneState = {
     }
 
     if ((this.readyToJump && !this.jumping) && keyboard.up.isDown) {
-      jump.play();
+      jump.play('', 0.5);
     }
 
     if ((this.readyToJump || this.jumping) && game.input.keyboard.downDuration(Phaser.Keyboard.UP, this.JUMP_DURATION)) {
