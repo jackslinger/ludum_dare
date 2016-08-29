@@ -171,7 +171,7 @@ levelOneState = {
 
     coins = game.add.group();
     coins.enableBody = true;
-    map.createFromObjects('Coin Layer', 27, 'orange', 0, true, false, coins);
+    map.createFromObjects('Coin Layer', 27, 'gem', 0, true, false, coins);
 
     spikes = game.add.group();
     spikes.enableBody = true;

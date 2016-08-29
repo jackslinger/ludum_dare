@@ -14,7 +14,9 @@ preloaderState = {
     this.load.atlasJSONHash('player', 'assets/images/player.png', 'assets/images/player.json');
     this.load.image('vase', 'assets/images/push_vase.png');
     game.load.atlasJSONHash('flags', 'assets/images/flag.png', 'assets/images/flag.json');
-    game.load.image('orange', 'assets/images/orange.png');
+    this.load.image('win_screen', 'assets/images/win.png');
+    // game.load.image('orange', 'assets/images/orange.png');
+    game.load.image('gem', 'assets/images/gem.png');
 
     this.load.bitmapFont('nokia', 'assets/fonts/nokia.png', 'assets/fonts/nokia.xml');
 
