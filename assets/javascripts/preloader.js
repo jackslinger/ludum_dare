@@ -7,7 +7,7 @@ preloaderState = {
     this.load.image('whiteBrick', 'assets/images/Witebrick.png');
     this.load.atlasJSONHash('tiles', 'assets/images/blocks.png', 'assets/images/blocks.json');
     this.load.atlasJSONHash('backgroundTiles', 'assets/images/background_tiles.png', 'assets/images/background_tiles.json');
-    this.load.image('player', 'assets/images/player_block.png');
+    // this.load.image('player', 'assets/images/player_block.png');
     this.load.image('goldenSkull', 'assets/images/golden_skull.png');
     this.load.image('spikes', 'assets/images/spikes_new.png');
     this.load.image('keys', 'assets/images/keys.png');
@@ -17,6 +17,7 @@ preloaderState = {
     this.load.image('blueKeyHole', 'assets/images/blue_keyhole.png');
     this.load.image('enemy', 'assets/images/enemy.png');
     this.load.atlasJSONHash('pushable', 'assets/images/pushable.png', 'assets/images/pushable.json');
+    this.load.atlasJSONHash('player', 'assets/images/player.png', 'assets/images/player.json');
     this.load.image('purple', 'assets/images/test_purple.png');
     this.load.image('vase', 'assets/images/push_vase.png');
     game.load.atlasJSONHash('flags', 'assets/images/flag.png', 'assets/images/flag.json');

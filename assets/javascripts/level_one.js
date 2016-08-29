@@ -36,7 +36,7 @@ function checkDisappearingCollision(player, disappearingBlock) {
 }
 
 function collideWithEnemy(player, enemy) {
-  playerAboveEnemy = ((player.y + 30) < enemy.y);
+  playerAboveEnemy = ((player.y + 14) < enemy.y);
   if (!playerAboveEnemy) {
     loseGame();
   }
@@ -139,11 +139,15 @@ levelOneState = {
     playerX = map.objects["Player Layer"][0].x;
     playerY = map.objects["Player Layer"][0].y - 32;
 
-    player = this.add.sprite(playerX, playerY, 'player')
+    player = this.add.sprite(playerX, playerY, 'player', 'character_idle');
+    player.animations.add('walking', Phaser.Animation.generateFrameNames('character_walking', 2, 6), 10, true);
+    player.animations.add('idle', ['character_idle'], 1, false);
+
     this.physics.arcade.enable(player);
     player.body.collideWorldBounds = true;
     player.body.bounce.y = 0.0;
-    player.body.setSize(20, 32, 8, 0);
+    player.anchor.setTo(0.5, 0);
+    player.body.setSize(20, 32, 7, 0);
     player.body.gravity.y = this.GRAVITY;
     player.body.maxVelocity.setTo(this.MAX_X_SPEED, this.MAX_Y_SPEED);
     player.body.drag.setTo(this.DRAG, 0);
@@ -270,9 +274,15 @@ levelOneState = {
 
     if (keyboard.left.isDown) {
       player.body.velocity.x -= this.ACCELERATION;
+      player.scale.x = -1;
+      player.animations.play('walking');
     }
     else if (keyboard.right.isDown) {
       player.body.velocity.x += this.ACCELERATION;
+      player.scale.x = 1;
+      player.animations.play('walking');
+    } else {
+      player.animations.play('idle');
     }
 
     if (player.body.blocked.down || player.body.touching.down) {
@@ -292,6 +302,7 @@ levelOneState = {
     }
   },
   render: function() {
+    // game.debug.body(player);
     // game.debug.body(plates.hash[0]);
   }
 }
