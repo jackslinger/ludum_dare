@@ -1,7 +1,7 @@
 {"frames": [
 
 {
-	"filename": "blue_key.png",
+	"filename": "blue_key",
 	"frame": {"x":0,"y":0,"w":32,"h":32},
 	"rotated": false,
 	"trimmed": false,
@@ -9,7 +9,7 @@
 	"sourceSize": {"w":32,"h":32}
 },
 {
-	"filename": "blue_key_hole.png",
+	"filename": "blue_keyhole",
 	"frame": {"x":32,"y":0,"w":32,"h":32},
 	"rotated": false,
 	"trimmed": false,
@@ -17,7 +17,7 @@
 	"sourceSize": {"w":32,"h":32}
 },
 {
-	"filename": "red_key.png",
+	"filename": "red_key",
 	"frame": {"x":64,"y":0,"w":32,"h":32},
 	"rotated": false,
 	"trimmed": false,
@@ -25,7 +25,7 @@
 	"sourceSize": {"w":32,"h":32}
 },
 {
-	"filename": "red_key_hole.png",
+	"filename": "red_keyhole",
 	"frame": {"x":96,"y":0,"w":32,"h":32},
 	"rotated": false,
 	"trimmed": false,
@@ -39,6 +39,6 @@
 	"format": "RGBA8888",
 	"size": {"w":128,"h":32},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:a6a34fb2ce58423c6dfd6da07128912c:e15e8086b6fb90b6b7a5bf6881bdb754:739e8ee64c4cefb7cd8640f1cab7931e$"
+	"smartupdate": "$TexturePacker:SmartUpdate:3b97575bcfd3691f28b0475f7d51d41f:dba462e29a15683377906b81dd26a504:739e8ee64c4cefb7cd8640f1cab7931e$"
 }
 }

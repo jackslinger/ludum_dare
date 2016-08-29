@@ -180,13 +180,13 @@ levelOneState = {
     // map.createFromObjects('Key Layer', 3, 'blueKey', 0, true, false, blueKeys);
     //
     blueKeyHoles = game.add.group();
-    // blueKeyHoles.enableBody = true;
-    // map.createFromObjects('Key Layer', 4, 'blueKeyHole', 0, true, false, blueKeyHoles);
-    //
-    // for (i in blueKeyHoles.hash) {
-    //   blueKeyHoles.hash[i].body.immovable = true;
-    // }
-    //
+    blueKeyHoles.enableBody = true;
+    map.createFromObjects('Key Layer', 24, 'keys', 'blue_keyhole', true, false, blueKeyHoles);
+
+    for (i in blueKeyHoles.hash) {
+      blueKeyHoles.hash[i].body.immovable = true;
+    }
+
     redKeys = game.add.group();
     // redKeys.enableBody = true;
     // map.createFromObjects('Key Layer', 5, 'redKey', 0, true, false, redKeys);
@@ -253,6 +253,7 @@ levelOneState = {
     this.physics.arcade.collide(player, disappearingBlocks, undefined, checkDisappearingCollision);
     this.physics.arcade.collide(pushBlocks, pushBlocks);
     this.physics.arcade.collide(pushBlocks, layer);
+    this.physics.arcade.collide(pushBlocks, disappearingBlocks);
 
     for (i in plates.hash) {
       plates.hash[i].pressed = false;

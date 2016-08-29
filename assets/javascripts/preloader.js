@@ -10,11 +10,7 @@ preloaderState = {
     // this.load.image('player', 'assets/images/player_block.png');
     this.load.image('goldenSkull', 'assets/images/golden_skull.png');
     this.load.image('spikes', 'assets/images/spikes_new.png');
-    this.load.image('keys', 'assets/images/keys.png');
-    this.load.image('blueKey', 'assets/images/blue_key.png');
-    this.load.image('redKey', 'assets/images/red_key.png');
-    this.load.image('redKeyHole', 'assets/images/red_keyhole.png');
-    this.load.image('blueKeyHole', 'assets/images/blue_keyhole.png');
+    this.load.atlasJSONHash('keys', 'assets/images/keys.png', 'assets/images/keys.json');
     this.load.image('enemy', 'assets/images/enemy.png');
     this.load.atlasJSONHash('pushable', 'assets/images/pushable.png', 'assets/images/pushable.json');
     this.load.atlasJSONHash('player', 'assets/images/player.png', 'assets/images/player.json');
