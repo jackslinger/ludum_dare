@@ -8,6 +8,10 @@ winState = {
   },
   update: function() {
     if (spacebar.isDown) {
+      latestCheckpoint.x = null;
+      latestCheckpoint.y = null;
+      keys.blueKey = 0;
+      keys.redKey = 0;
       game.state.start('levelOne');
     }
   }
