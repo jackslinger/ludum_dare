@@ -122,6 +122,8 @@ levelOneState = {
 
     layer.resizeWorld();
 
+    jump = game.add.audio('jump');
+
     inventoryGroup = this.add.group();
 
     inventoryBlueKey = this.add.sprite(0, 0, 'keys', 'blue_key');
