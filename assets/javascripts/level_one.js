@@ -8,9 +8,9 @@ var latestCheckpoint = {
   y: null
 }
 
-var visableBlocks = {
+var visableBlocks = {}
 
-}
+var score = 0;
 
 function winGame() {
   game.state.start('win');
@@ -69,6 +69,13 @@ function collectRedKey(player, key) {
   keys.redKey += 1;
   redKeyText.text = keys.redKey;
   key.kill();
+}
+
+function collectCoin(player, coin) {
+  score += 100;
+  scoreText.text = "Score: " + score;
+  collect.play();
+  coin.kill();
 }
 
 function collideWithRedLock(player, lock) {
@@ -132,20 +139,6 @@ levelOneState = {
     music = game.add.audio('music', 1, true);
     music.play();
 
-    inventoryGroup = this.add.group();
-
-    inventoryBlueKey = this.add.sprite(0, 0, 'keys', 'blue_key');
-    inventoryBlueKey.fixedToCamera = true;
-
-    blueKeyText = this.add.bitmapText(40, 7, 'nokia', '0', 16);
-    blueKeyText.fixedToCamera = true;
-
-    inventoryRedKey = this.add.sprite(0, 32, 'keys', 'red_key');
-    inventoryRedKey.fixedToCamera = true;
-
-    redKeyText = this.add.bitmapText(40, 39, 'nokia', '0', 16);
-    redKeyText.fixedToCamera = true;
-
     playerX = map.objects["Player Layer"][0].x;
     playerY = map.objects["Player Layer"][0].y - 32;
 
@@ -174,7 +167,11 @@ levelOneState = {
 
     skulls = game.add.group();
     skulls.enableBody = true;
-    map.createFromObjects('Skull Layer', 16, 'goldenSkull', 0, true, false, skulls)
+    map.createFromObjects('Skull Layer', 16, 'goldenSkull', 0, true, false, skulls);
+
+    coins = game.add.group();
+    coins.enableBody = true;
+    map.createFromObjects('Coin Layer', 27, 'orange', 0, true, false, coins);
 
     spikes = game.add.group();
     spikes.enableBody = true;
@@ -246,13 +243,29 @@ levelOneState = {
       disappearingBlocks.hash[i].body.immovable = true;
     }
 
+    inventoryBlueKey = this.add.sprite(0, 0, 'keys', 'blue_key');
+    inventoryBlueKey.fixedToCamera = true;
+
+    blueKeyText = this.add.bitmapText(40, 7, 'nokia', '0', 16);
+    blueKeyText.fixedToCamera = true;
+
+    inventoryRedKey = this.add.sprite(0, 32, 'keys', 'red_key');
+    inventoryRedKey.fixedToCamera = true;
+
+    redKeyText = this.add.bitmapText(40, 39, 'nokia', '0', 16);
+    redKeyText.fixedToCamera = true;
+
+    scoreText = this.add.bitmapText(690, 10, 'nokia', 'Score: 0', 16);
+    scoreText.fixedToCamera = true;
+
     keyboard = this.input.keyboard.createCursorKeys();
   },
   update: function () {
     this.physics.arcade.collide(player, layer);
     this.physics.arcade.collide(enemies, layer, enemyBumpIntoWall);
     this.physics.arcade.collide(player, enemies, collideWithEnemy);
-    this.physics.arcade.collide(player, skulls, winGame);
+    this.physics.arcade.overlap(player, skulls, winGame);
+    this.physics.arcade.overlap(player, coins, collectCoin);
     this.physics.arcade.collide(player, spikes, loseGame, checkSpikeCollision);
     this.physics.arcade.collide(player, blueKeys, collectBlueKey);
     this.physics.arcade.collide(player, redKeys, collectRedKey);
