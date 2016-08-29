@@ -46,6 +46,7 @@ function collideWithEnemy(player, enemy) {
 
 function collideWithCheckpoint(player, checkpoint) {
   if (!checkpoint.flagRaised) {
+    collect.play();
     checkpoint.flagRaised = true;
     checkpoint.frameName = 'flag_raised';
     latestCheckpoint.x = checkpoint.x;
@@ -125,7 +126,7 @@ levelOneState = {
     layer.resizeWorld();
 
     jump = game.add.audio('jump', 0.3);
-    // collectSkull = game.add.audio('collect');
+    collect = game.add.audio('collect');
     hurt = game.add.audio('hurt');
 
     music = game.add.audio('music', 1, true);
