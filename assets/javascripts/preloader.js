@@ -4,7 +4,7 @@ preloaderState = {
 
     this.load.tilemap('map', 'assets/images/levelOne.json', null, Phaser.Tilemap.TILED_JSON);
     this.load.atlasJSONHash('tiles', 'assets/images/blocks.png', 'assets/images/blocks.json');
-    this.load.atlasJSONHash('backgroundTiles', 'assets/images/background_tiles.png', 'assets/images/background_tiles.json');
+    this.load.atlasJSONHash('backgroundTiles', 'assets/images/background_bricks.png', 'assets/images/background_bricks.json');
     this.load.image('sky', 'assets/images/sky_graphic.png');
     this.load.image('goldenSkull', 'assets/images/golden_skull.png');
     this.load.image('spikes', 'assets/images/spikes_new.png');
@@ -25,6 +25,7 @@ preloaderState = {
     game.load.audio('collect', 'assets/sounds/collect_skull.wav');
     game.load.audio('hurt', 'assets/sounds/hurt.wav');
     game.load.audio('music', 'assets/sounds/Desert_City.mp3');
+    game.load.audio('checkpoint', 'assets/sounds/checkpoint.wav');
   },
   create: function() {
     spacebar = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);

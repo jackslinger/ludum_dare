@@ -9,6 +9,7 @@ winState = {
       latestCheckpoint.y = null;
       keys.blueKey = 0;
       keys.redKey = 0;
+      music.stop();
       game.state.start('levelOne');
     }
   }

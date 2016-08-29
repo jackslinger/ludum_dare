@@ -46,7 +46,7 @@ function collideWithEnemy(player, enemy) {
 
 function collideWithCheckpoint(player, checkpoint) {
   if (!checkpoint.flagRaised) {
-    collect.play();
+    checkpointSound.play();
     checkpoint.flagRaised = true;
     checkpoint.frameName = 'flag_raised';
     latestCheckpoint.x = checkpoint.x;
@@ -124,7 +124,7 @@ levelOneState = {
 
     map = this.add.tilemap('map');
     map.addTilesetImage('blocks', 'tiles');
-    map.addTilesetImage('background_tiles', 'backgroundTiles');
+    map.addTilesetImage('background_bricks', 'backgroundTiles');
 
     backgroundLayer = map.createLayer('Background Layer')
     layer = map.createLayer('Main Layer');
@@ -135,6 +135,7 @@ levelOneState = {
     jump = game.add.audio('jump', 0.3);
     collect = game.add.audio('collect');
     hurt = game.add.audio('hurt');
+    checkpointSound = game.add.audio('checkpoint');
 
     music = game.add.audio('music', 1, true);
     music.play();
@@ -158,7 +159,7 @@ levelOneState = {
 
     pushBlocks = game.add.group();
     pushBlocks.enableBody = true;
-    map.createFromObjects('Push Layer', 19, 'pushable', 'push_vase.png', true, false, pushBlocks)
+    map.createFromObjects('Push Layer', 39, 'pushable', 'push_vase.png', true, false, pushBlocks)
 
     for (i in pushBlocks.hash) {
       pushBlocks.hash[i].body.drag.setTo(600, 0);
@@ -167,15 +168,15 @@ levelOneState = {
 
     skulls = game.add.group();
     skulls.enableBody = true;
-    map.createFromObjects('Skull Layer', 16, 'goldenSkull', 0, true, false, skulls);
+    map.createFromObjects('Skull Layer', 36, 'goldenSkull', 0, true, false, skulls);
 
     coins = game.add.group();
     coins.enableBody = true;
-    map.createFromObjects('Coin Layer', 27, 'gem', 0, true, false, coins);
+    map.createFromObjects('Coin Layer', 47, 'gem', 0, true, false, coins);
 
     spikes = game.add.group();
     spikes.enableBody = true;
-    map.createFromObjects('Spike Layer', 15, 'spikes', 0, true, false, spikes);
+    map.createFromObjects('Spike Layer', 35, 'spikes', 0, true, false, spikes);
 
     for (i in spikes.hash) {
       spikes.hash[i].body.setSize(32, 12, 0, 20);
@@ -184,11 +185,11 @@ levelOneState = {
 
     blueKeys = game.add.group();
     blueKeys.enableBody = true;
-    map.createFromObjects('Key Layer', 23, 'keys', 'blue_key', true, false, blueKeys);
+    map.createFromObjects('Key Layer', 43, 'keys', 'blue_key', true, false, blueKeys);
 
     blueKeyHoles = game.add.group();
     blueKeyHoles.enableBody = true;
-    map.createFromObjects('Key Layer', 24, 'keys', 'blue_keyhole', true, false, blueKeyHoles);
+    map.createFromObjects('Key Layer', 44, 'keys', 'blue_keyhole', true, false, blueKeyHoles);
 
     for (i in blueKeyHoles.hash) {
       blueKeyHoles.hash[i].body.immovable = true;
@@ -196,11 +197,11 @@ levelOneState = {
 
     redKeys = game.add.group();
     redKeys.enableBody = true;
-    map.createFromObjects('Key Layer', 25, 'keys', 'red_key', true, false, redKeys);
+    map.createFromObjects('Key Layer', 45, 'keys', 'red_key', true, false, redKeys);
 
     redKeyHoles = game.add.group();
     redKeyHoles.enableBody = true;
-    map.createFromObjects('Key Layer', 26, 'keys', 'red_keyhole', true, false, redKeyHoles);
+    map.createFromObjects('Key Layer', 46, 'keys', 'red_keyhole', true, false, redKeyHoles);
 
     for (i in redKeyHoles.hash) {
       redKeyHoles.hash[i].body.immovable = true;
@@ -208,7 +209,7 @@ levelOneState = {
 
     enemies = game.add.group();
     enemies.enableBody = true;
-    map.createFromObjects('Enemy Layer', 21, 'enemy', 0, true, false, enemies);
+    map.createFromObjects('Enemy Layer', 41, 'enemy', 0, true, false, enemies);
 
     for (i in enemies.hash) {
       enemies.hash[i].body.collideWorldBounds = true;
@@ -218,7 +219,7 @@ levelOneState = {
 
     checkPoints = game.add.group();
     checkPoints.enableBody = true;
-    map.createFromObjects('Checkpoint Layer', 22, 'flags', 'flag_pole', true, false, checkPoints);
+    map.createFromObjects('Checkpoint Layer', 42, 'flags', 'flag_pole', true, false, checkPoints);
 
     for (i in checkPoints.hash) {
       checkPoints.hash[i].body.immovable = true;
@@ -227,7 +228,7 @@ levelOneState = {
 
     plates = game.add.group();
     plates.enableBody = true;
-    map.createFromObjects('Plate Layer', 18, 'pushable', 'pressue_plate_up.png', true, false, plates);
+    map.createFromObjects('Plate Layer', 38, 'pushable', 'pressue_plate_up.png', true, false, plates);
 
     for (i in plates.hash) {
       plates.hash[i].body.immovable = true;
@@ -237,7 +238,8 @@ levelOneState = {
 
     disappearingBlocks = game.add.group();
     disappearingBlocks.enableBody = true;
-    map.createFromObjects('Plate Layer', 10, 'tiles', 'redbrick.png' ,true, false, disappearingBlocks);
+    map.createFromObjects('Plate Layer', 27, 'tiles', 'Woodblocks.png' ,true, false, disappearingBlocks);
+    map.createFromObjects('Plate Layer', 28, 'tiles', 'Woodblocks2.png' ,true, false, disappearingBlocks);
 
     for (i in disappearingBlocks.hash) {
       disappearingBlocks.hash[i].body.immovable = true;

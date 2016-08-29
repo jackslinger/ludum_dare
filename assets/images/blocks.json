@@ -41,7 +41,7 @@
 	"sourceSize": {"w":32,"h":32}
 },
 {
-	"filename": "grass.png",
+	"filename": "bluetosandleft.png",
 	"frame": {"x":160,"y":0,"w":32,"h":32},
 	"rotated": false,
 	"trimmed": false,
@@ -49,7 +49,7 @@
 	"sourceSize": {"w":32,"h":32}
 },
 {
-	"filename": "grass_safe.png",
+	"filename": "bluetosandright.png",
 	"frame": {"x":192,"y":0,"w":32,"h":32},
 	"rotated": false,
 	"trimmed": false,
@@ -57,7 +57,7 @@
 	"sourceSize": {"w":32,"h":32}
 },
 {
-	"filename": "grass_safe_left.png",
+	"filename": "Dirt.png",
 	"frame": {"x":224,"y":0,"w":32,"h":32},
 	"rotated": false,
 	"trimmed": false,
@@ -65,7 +65,7 @@
 	"sourceSize": {"w":32,"h":32}
 },
 {
-	"filename": "grass_safe_right.png",
+	"filename": "grass.png",
 	"frame": {"x":256,"y":0,"w":32,"h":32},
 	"rotated": false,
 	"trimmed": false,
@@ -73,7 +73,7 @@
 	"sourceSize": {"w":32,"h":32}
 },
 {
-	"filename": "redbrick.png",
+	"filename": "grass_safe.png",
 	"frame": {"x":288,"y":0,"w":32,"h":32},
 	"rotated": false,
 	"trimmed": false,
@@ -81,8 +81,144 @@
 	"sourceSize": {"w":32,"h":32}
 },
 {
-	"filename": "Witebrick.png",
+	"filename": "grass_safe_left.png",
 	"frame": {"x":320,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "grass_safe_right.png",
+	"frame": {"x":352,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "red_brick_edgeleft.png",
+	"frame": {"x":384,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "red_brick_edgeright.png",
+	"frame": {"x":416,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "red_brick_grass_left.png",
+	"frame": {"x":448,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "red_brick_grass_right.png",
+	"frame": {"x":480,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "redbrick.png",
+	"frame": {"x":512,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "redtoblueleft.png",
+	"frame": {"x":544,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "redtoblueright.png",
+	"frame": {"x":576,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "sandy_brick.png",
+	"frame": {"x":608,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "sandy_brick_edgeleft.png",
+	"frame": {"x":640,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "sandy_brick_edgeright.png",
+	"frame": {"x":672,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "sandy_brick_grass_right.png",
+	"frame": {"x":704,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "Witebrick.png",
+	"frame": {"x":736,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "Witetoblueleft.png",
+	"frame": {"x":768,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "Witetoblueright.png",
+	"frame": {"x":800,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "Woodblocks.png",
+	"frame": {"x":832,"y":0,"w":32,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
+	"sourceSize": {"w":32,"h":32}
+},
+{
+	"filename": "Woodblocks2.png",
+	"frame": {"x":864,"y":0,"w":32,"h":32},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
@@ -93,8 +229,8 @@
 	"version": "1.0",
 	"image": "blocks.png",
 	"format": "RGBA8888",
-	"size": {"w":352,"h":32},
+	"size": {"w":896,"h":32},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:f4bc03f21f96a26f078c85acca016635:0d463b4d5f31f583ffd2c57e796d4f98:b1f1a031cef7856acce3e479bba415bf$"
+	"smartupdate": "$TexturePacker:SmartUpdate:03d75a1486f8185b2b1306c6db7b5f7a:8bbc86f13e3b0a7a944f8d24712c7b80:b1f1a031cef7856acce3e479bba415bf$"
 }
 }
