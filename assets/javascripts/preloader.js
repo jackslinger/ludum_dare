@@ -21,7 +21,7 @@ preloaderState = {
 
     this.load.bitmapFont('nokia', 'assets/fonts/nokia.png', 'assets/fonts/nokia.xml');
 
-    game.load.audio('jump', 'assets/sounds/jump.wav');
+    game.load.audio('jump', 'assets/sounds/jumpfinal.wav');
     game.load.audio('collect', 'assets/sounds/collect_skull.wav');
     game.load.audio('hurt', 'assets/sounds/hurt.wav');
     game.load.audio('music', 'assets/sounds/Desert_City.mp3');
