@@ -1,7 +1,7 @@
 {"frames": [
 
 {
-	"filename": "flag.png",
+	"filename": "flag_raised",
 	"frame": {"x":0,"y":0,"w":32,"h":32},
 	"rotated": false,
 	"trimmed": false,
@@ -9,7 +9,7 @@
 	"sourceSize": {"w":32,"h":32}
 },
 {
-	"filename": "flag_pole.png",
+	"filename": "flag_pole",
 	"frame": {"x":32,"y":0,"w":32,"h":32},
 	"rotated": false,
 	"trimmed": false,

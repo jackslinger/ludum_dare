@@ -45,7 +45,7 @@ function collideWithEnemy(player, enemy) {
 function collideWithCheckpoint(player, checkpoint) {
   if (!checkpoint.flagRaised) {
     checkpoint.flagRaised = true;
-    checkpoint.frameName = 'flag.png';
+    checkpoint.frameName = 'flag_up';
     latestCheckpoint.x = checkpoint.x;
     latestCheckpoint.y = checkpoint.y;
   }
@@ -211,7 +211,7 @@ levelOneState = {
 
     checkPoints = game.add.group();
     checkPoints.enableBody = true;
-    map.createFromObjects('Checkpoint Layer', 22, 'flags', 'flag_pole.png', true, false, checkPoints);
+    map.createFromObjects('Checkpoint Layer', 22, 'flags', 'flag_raised', true, false, checkPoints);
 
     for (i in checkPoints.hash) {
       checkPoints.hash[i].body.immovable = true;
