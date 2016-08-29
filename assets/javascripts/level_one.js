@@ -293,7 +293,7 @@ levelOneState = {
       this.readyToJump = false;
     }
 
-    if (this.readyToJump && !this.jumping) && keyboard.up.isDown) {
+    if ((this.readyToJump && !this.jumping) && keyboard.up.isDown) {
       jump.play();
     }
 
