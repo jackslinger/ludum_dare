@@ -124,7 +124,7 @@ levelOneState = {
 
     layer.resizeWorld();
 
-    jump = game.add.audio('jump');
+    jump = game.add.audio('jump', 0.3);
     // collectSkull = game.add.audio('collect');
     hurt = game.add.audio('hurt');
 
@@ -296,27 +296,23 @@ levelOneState = {
     }
 
     if (player.body.blocked.down || player.body.touching.down) {
-      this.readyToJump = true;
-      this.jumping = false;
+      this.touchedFloor = true;
     } else {
-      this.readyToJump = false;
+      this.touchedFloor = false;
     }
 
-    if ((this.readyToJump && !this.jumping) && keyboard.up.isDown) {
-      jump.play('', 0.5);
-    }
-
-    if ((this.readyToJump || this.jumping) && game.input.keyboard.downDuration(Phaser.Keyboard.UP, this.JUMP_DURATION)) {
-      player.body.velocity.y = this.JUMP_SPEED;
-      this.readyToJump = false;
+    if ((this.touchedFloor && !this.jumping) && game.input.keyboard.downDuration(Phaser.Keyboard.UP, this.JUMP_DURATION)) {
       this.jumping = true;
-    } else {
-      this.jumping = false;
+      jump.play();
     }
 
-    // if (this.jumping && game.input.keyboard.upDuration(Phaser.Keyboard.UP)) {
-    //   this.jumping = false;
-    // }
+    if ((this.touchedFloor || this.jumping) && game.input.keyboard.downDuration(Phaser.Keyboard.UP, this.JUMP_DURATION)) {
+      player.body.velocity.y = this.JUMP_SPEED;
+    }
+
+    if (this.jumping && game.input.keyboard.upDuration(Phaser.Keyboard.UP)) {
+      this.jumping = false;
+    }
   },
   render: function() {
     // game.debug.body(player);
