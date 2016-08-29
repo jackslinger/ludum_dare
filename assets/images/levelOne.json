@@ -866,6 +866,18 @@
                  "width":32,
                  "x":128,
                  "y":224
+                }, 
+                {
+                 "gid":22,
+                 "height":32,
+                 "id":112,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":896,
+                 "y":928
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1368,8 +1380,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":896,
-                 "y":928
+                 "x":1024,
+                 "y":960
                 }, 
                 {
                  "gid":25,
@@ -1390,7 +1402,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":112,
+ "nextobjectid":113,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":32,
