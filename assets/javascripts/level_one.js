@@ -309,11 +309,13 @@ levelOneState = {
     if ((this.readyToJump || this.jumping) && game.input.keyboard.downDuration(Phaser.Keyboard.UP, this.JUMP_DURATION)) {
       player.body.velocity.y = this.JUMP_SPEED;
       this.jumping = true;
-    }
-
-    if (this.jumping && game.input.keyboard.upDuration(Phaser.Keyboard.UP)) {
+    } else {
       this.jumping = false;
     }
+
+    // if (this.jumping && game.input.keyboard.upDuration(Phaser.Keyboard.UP)) {
+    //   this.jumping = false;
+    // }
   },
   render: function() {
     // game.debug.body(player);
